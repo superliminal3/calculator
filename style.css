@@ -1,0 +1,50 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px;
+}
+
+#container {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+}
+
+#display {
+	width: 492px;
+	height: 50px;
+	margin: 4px;
+	background: lightblue;
+}
+
+#buttonsContainerA {
+	width: 500px;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 2px;
+}
+
+#buttonsContainerB {
+	width: 500px;
+	height: auto;
+	display: flex;
+	padding: 2px;
+}
+
+#clear,
+#clear-entry {
+	background: grey;
+	width: 244px;
+	height: 50px;
+	margin: 2px;
+	text-align: center;
+}
+
+.buttonA {
+	background: grey;
+	width: 120px;
+	height: 50px;
+	margin: 2px;
+}
