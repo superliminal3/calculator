@@ -44,10 +44,11 @@ function createButtons() {
 	}
 
 	function onclickEqualButton() {
-		if (!isNaN(prevBuf) && !isNaN(parseFloat(activeBuf))) {
+		if (!isNaN(parseFloat(prevBuf)) && !isNaN(parseFloat(activeBuf))) {
 			prevBuf = operate(prevBuf, activeBuf, sign);
 			display(prevBuf);
 			activeBuf = "";
+			console.log("111");
 		}
 	}
 
