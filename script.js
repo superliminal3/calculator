@@ -1,5 +1,7 @@
 const buttonsContainer = document.querySelector("#buttonsContainerA");
 const displayDiv = document.querySelector("#display");
+const clearButton = document.querySelector("#clear");
+const clearEntryButton = document.querySelector("#clear-entry");
 
 let buttons = [];
 let activeSign = 0;
@@ -10,7 +12,7 @@ function display(n) {
 }
 
 function operate(prev, cur, sign) {
-	if (!isNaN(parseFloat(cur))) {
+	if (!isNaN(parseFloat(cur)) && !isNaN(parseFloat(prev))) {
 		switch (sign) {
 			case '/': return parseFloat(prev) / parseFloat(cur);
 			case '*': return parseFloat(prev) * parseFloat(cur);
@@ -30,9 +32,10 @@ function createButtons() {
 		sign = opSign;
 		if (prevBuf == "") {
 			prevBuf = activeBuf;
-		} else {
+		} else if (!isNaN(parseFloat(prevBuf)) && !isNaN(parseFloat(activeBuf))) {
 			prevBuf = operate(prevBuf, activeBuf, opSign);
 		}
+		console.log(prevBuf, sign);
 		activeBuf = "";
 	}
 
@@ -42,9 +45,11 @@ function createButtons() {
 	}
 
 	function onclickEqualButton() {
-		prevBuf = operate(prevBuf, activeBuf, sign);
-		display(prevBuf);
-		activeBuf = "";
+		if (!isNaN(prevBuf) && !isNaN(parseFloat(activeBuf))) {
+			prevBuf = operate(prevBuf, activeBuf, sign);
+			display(prevBuf);
+			activeBuf = "";
+		}
 	}
 
 	for (let i = 0; i < 16; i++) {
@@ -70,6 +75,18 @@ function createButtons() {
 			case 14: buttons[i].onclick = () => onclickEqualButton(); buttons[i].textContent = "="; break;
 			case 15: buttons[i].onclick = () => onclickSignButton("+"); buttons[i].textContent = "+"; break;
 		}
+	}
+	clearButton.onclick = () => {
+		prevBuf = "";
+		activeBuf = "";
+		sign = "";
+		display(activeBuf);
+	} 
+	clearEntryButton.onclick = () => {
+		let arr = activeBuf.split("");
+		arr.pop();
+		activeBuf = arr.join("");
+		display(activeBuf);
 	}
 }
 
