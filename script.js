@@ -4,8 +4,6 @@ const clearButton = document.querySelector("#clear");
 const clearEntryButton = document.querySelector("#clear-entry");
 
 let buttons = [];
-let activeSign = 0;
-let opcount = 0;
 
 function display(n) {
 	displayDiv.textContent = n;
@@ -48,7 +46,6 @@ function createButtons() {
 			prevBuf = operate(prevBuf, activeBuf, sign);
 			display(prevBuf);
 			activeBuf = "";
-			console.log("111");
 		}
 	}
 
@@ -91,3 +88,4 @@ function createButtons() {
 }
 
 createButtons();
+console.log(buttons[10]);
