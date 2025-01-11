@@ -35,7 +35,6 @@ function createButtons() {
 		} else if (!isNaN(parseFloat(prevBuf)) && !isNaN(parseFloat(activeBuf))) {
 			prevBuf = operate(prevBuf, activeBuf, opSign);
 		}
-		console.log(prevBuf, sign);
 		activeBuf = "";
 	}
 
